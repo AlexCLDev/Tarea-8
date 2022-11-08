@@ -1,0 +1,129 @@
+/*Estilos generales*/
+body{
+  font-family: sans-serif, Arial, Helvetica;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.layout{
+  width: 100%;
+  height: auto;
+
+  display: grid;
+  /*Aqui indicamos cantidad de columnas, cuanto quieremos que ocupen y despues le damos el grid-area: a cada componente*/
+  grid-template-areas: 
+      "header header header header"
+      "nav nav nav nav"
+      "content content content lateral"
+      "footer footer footer footer"
+  ;
+
+  grid-template-rows: 100px 70px auto 70px;
+}
+
+
+/*Estilos de la barra lateral*/
+.lateral{
+  grid-area: lateral;
+  background: #f6f7f9;
+  border-left: 1px solid #ddd;
+  padding: 20px;
+}
+
+.lateral > div{
+  box-sizing: border-box;
+  width: 90%;
+  margin: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #ddd;
+}
+
+
+input[type="text"],
+textarea{
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: #f6f7f9;
+  color: #454545;
+  width: 80%;
+  opacity: 4;
+  outline: 0;
+  border-color: transparent;
+}
+
+/*Estilo del contenido*/
+.content{
+  grid-area: content;
+
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.peli-item{
+  flex-grow: 1;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #ddd;
+  background: white;
+  margin: 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.peli-item .edit{
+  margin-right: 7px;
+}
+
+.button,
+input[type="submit"],
+input[type="button"]{
+  background-color: #0e73e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 45px;   
+  font-size: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 300ms;
+}
+.edit:hover{
+  background-color: #e77b00;
+}
+
+
+.delete:hover{
+  background-color: #9c0202;
+}
+
+@media (max-width: 1085px){
+  .content{
+      flex-flow:column wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .peli-item{
+      width: 80%;
+  }
+}
+
+.no-encontrado{
+  color: red;
+}
+
+.content{
+    color: black    ;
+}

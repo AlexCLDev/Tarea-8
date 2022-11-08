@@ -1,0 +1,9 @@
+.rutas{
+    margin: 10%;
+}
+
+@media  (width < 470px) {
+    .rutas{
+        margin: 20% 10%;
+    }
+}

@@ -1,12 +1,17 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { useParams } from 'react-router';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonRouterOutlet, IonTitle, IonToolbar } from '@ionic/react';
+import { useState } from 'react';
+import { Route, useParams } from 'react-router';
+import { Buscador } from '../components/Buscador';
+import { Crear } from '../components/Crear';
 import ExploreContainer from '../components/ExploreContainer';
+import { Home } from '../components/Home';
 import './Page.css';
 
 const Page: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
-
+  const [listadoState, setListadoState] = useState([])
+  
   return (
     <IonPage>
       <IonHeader>
@@ -15,17 +20,26 @@ const Page: React.FC = () => {
             <IonMenuButton />
           </IonButtons>
           <IonTitle>{name}</IonTitle>
-        </IonToolbar>
+        </IonToolbar> 
       </IonHeader>
 
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name={name} />
-      </IonContent>
+      <IonRouterOutlet className='rutas'>
+            <Route path="/page/home" exact={true}>
+              <Home listadoState={listadoState} setListadoState={setListadoState} />
+            </Route>
+            <Route path="/" exact={true}>
+            <Home listadoState={listadoState} setListadoState={setListadoState} />
+            </Route>
+            <Route path="/page/agregar" exact={true}>
+            <Crear setListadoState={setListadoState}/>
+            </Route>
+            <Route path="/page/buscar" exact={true}>
+            <Buscador listadoState={listadoState} setListadoState={setListadoState}/>
+            </Route>
+            
+
+            
+          </IonRouterOutlet>
     </IonPage>
   );
 };
